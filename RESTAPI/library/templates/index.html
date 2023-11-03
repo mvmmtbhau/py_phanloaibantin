@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .form {
+            display: flex;
+            flex-direction: column;
+            max-width: 50%;
+        }
+
+        .btn {
+            padding: 4px 10px;
+            max-width: 100px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .refresh {
+            text-decoration: none;
+            border: 2px solid;
+            padding: 5px 20px;
+            color: white;
+            background-color: black;
+        }
+
+        .refresh:hover {
+            color: black;
+            background-color: white;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Phân loại bản tin, xin nhập nội dung bản tin:</h1>
+        <form action="phan-loai/nhanh" method="POST" class="form" id="form">
+            <textarea name="bantin" id="bantin" cols="30" rows="10"></textarea>
+            <p id="error" class="error" style="margin-top: 10px; margin-bottom: 10px;"></p>
+            <input type="button" onclick="btn_submit()" class="btn" value="Phân loại"></input>
+        </form>
+        <a href="home" class="refresh">Làm mới</a>
+        <h2>{{ label }} </h2>
+    </div>
+
+    <script>
+        function btn_submit() {
+            form = document.getElementById('form');
+            input = document.getElementById("bantin");
+            if (input.value == '') {
+                errorMessage = document.getElementById("error");
+                errorMessage.innerHTML = "Input không rỗng"
+            } else {
+                form.submit()
+            }
+        }
+    </script>
+</body>
+
+</html>
